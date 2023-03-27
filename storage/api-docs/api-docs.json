@@ -1,0 +1,140 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My First API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/shows": {
+            "get": {
+                "tags": [
+                    "shows"
+                ],
+                "summary": "Get list of shows",
+                "description": "Return list of shows",
+                "operationId": "listShows",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/api/shows/{showID}/events": {
+            "get": {
+                "tags": [
+                    "shows"
+                ],
+                "summary": "Get list of shows",
+                "description": "Return list of shows",
+                "operationId": "listShowEvents",
+                "parameters": [
+                    {
+                        "name": "showID",
+                        "in": "path",
+                        "description": "Show id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/api/events/{eventID}/places": {
+            "get": {
+                "tags": [
+                    "event"
+                ],
+                "summary": "Get list of event places",
+                "description": "Return list of event places",
+                "operationId": "listEventPlaces",
+                "parameters": [
+                    {
+                        "name": "eventID",
+                        "in": "path",
+                        "description": "Event id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/api/events/{eventID}/reserve": {
+            "post": {
+                "tags": [
+                    "event"
+                ],
+                "summary": "Reserve places",
+                "description": "Reserve places",
+                "operationId": "reserveEventPlaces",
+                "parameters": [
+                    {
+                        "name": "eventID",
+                        "in": "path",
+                        "description": "Event id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "406": {
+                        "description": "Not acceptable. Trying to reserve not available places"
+                    }
+                }
+            }
+        }
+    }
+}
